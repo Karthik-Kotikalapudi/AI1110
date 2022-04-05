@@ -44,4 +44,5 @@ plt.plot(7, 4, marker="o", markersize=2.5, markeredgecolor="black", markerfaceco
 ax.set_xlim(-5, 20)
 ax.set_ylim(-10, 15)
 
+plt.savefig("../Figs/Diagram.png")
 plt.show()
