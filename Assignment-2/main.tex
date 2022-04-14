@@ -181,16 +181,43 @@ Also,
     f(\pi) &= e^{\pi} \sin \pi = 0\\
     \therefore f(0) &= f(\pi) = 0
 \end{align}
+$f(x)$ is differentiable on $\brak{0,\pi}$ if $\lim_{h \to 0} \frac{f(x+h)-f(x)}{h}$ exists for every $x \in \brak{0,\pi}$.\\
+Let the value of the limit be L.
+\begin{align}
+    \implies L &= \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}\\
+    &= \lim_{h \to 0} \frac{e^{-\brak{x+h}} \sin \brak{x+h} - e^{-x} \sin x}{h}\\
+    \label{eq-1}
+    &= e^{-x} \lim_{h \to 0} \brak {\frac{e^{-h} \sin \brak{x+h} - \sin x}{h}}
+\end{align}
+We know that,
+\begin{align}
+    \label{eq-2}
+    \sin \brak{x+h} &= \sin x \cos h + \cos x \sin h\\
+    \label{eq-3}
+    \text{Also, } \lim_{h \to 0} \frac{\sin h}{h} &= 1,\\
+    \label{eq-4}
+    \lim_{h \to 0} \cos h = \lim_{h \to 0} e^{-h} &= 1
+\end{align}
+From equations \eqref{eq-2} \eqref{eq-3} \eqref{eq-4}, equation \eqref{eq-1} becomes
+\begin{align}
+    L &= e^{-x} \lim_{h \to 0} \brak{e^{-h} \cos x +\frac{e^{-h}sinx - sinx}{h}}\\
+    &= e^{-x} \brak{\cos x + \sin x \lim_{h \to 0} \frac{e^{-h}-1}{h}}
+\end{align}
+We know that
+\begin{align}
+    \lim_{h \to 0} \frac{1-e^{-h}}{h} &= 1,\\
+    \implies L &= e^{-x} \brak{\cos x - \sin x}
+\end{align}
+
+$e^{-x} \brak{\cos x - \sin x}$ exists $\forall x \in \brak{0,\pi}$.\\
+$\implies f(x)$ is differentiable in $\brak{0,\pi}$.\\
+Thus, all the conditions of the Rolle's theorem are satisfied.\\
+$\therefore \exists c \in \brak{0, \pi}$ such that $f^\prime(c) = 0$.\\
 By differentiating $f(x)$, 
 \begin{align}
     \label{eq-diff}
     f^\prime (x) = e^{-x}\brak{\cos x - \sin x}
 \end{align}
-
-$\therefore f^{\prime} (c)$ exists in $\brak{0,\pi}$\\
-$\implies f(x)$ is differentiable in $\brak{0,\pi}$\\
-Thus, all the conditions of the Rolle's theorem are satisfied.\\
-$\therefore \exists$ at least one value of $x=c$ such that $f^\prime(c) = 0$
 $\because f^\prime(c) = 0$, substituing $f^\prime(x)$ at $x=c$ from equation \eqref{eq-diff},
 \begin{align}
     e^{-c} \brak{\cos c - \sin c} &= 0
