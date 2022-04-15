@@ -181,35 +181,49 @@ Also,
     f(\pi) &= e^{\pi} \sin \pi = 0\\
     \therefore f(0) &= f(\pi) = 0
 \end{align}
-$f(x)$ is differentiable on $\brak{0,\pi}$ if $\lim_{h \to 0} \frac{f(x+h)-f(x)}{h}$ exists for every $x \in \brak{0,\pi}$.\\
-Let the value of the limit be L.
+$f(x)$ is differentiable on $\brak{0,\pi}$ if Left hand derivative(LHD) and right hand derivative(RHD) exists and equal for every $x \in \brak{0,\pi}$ as we already know $f(x)$ is continuous.\\
+If $c \in \brak{0,\pi}$, then
 \begin{align}
-    \implies L &= \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}\\
-    &= \lim_{h \to 0} \frac{e^{-\brak{x+h}} \sin \brak{x+h} - e^{-x} \sin x}{h}\\
+    \text{LHD} &= \lim_{h \to 0^{-}} \frac{f(c+h)-f(c)}{h}\\
+    &= \lim_{h \to 0^{-}} \frac{e^{-\brak{c+h}} \sin \brak{c+h} - e^{-c} \sin c}{h}\\
     \label{eq-1}
-    &= e^{-x} \lim_{h \to 0} \brak {\frac{e^{-h} \sin \brak{x+h} - \sin x}{h}}
+    &= e^{-c} \lim_{h \to 0^{-}} \brak {\frac{e^{-h} \sin \brak{c+h} - \sin c}{h}}
+\end{align}
+Similarly,
+\begin{align}
+    \text{RHD} &= \lim_{h \to 0^{+}} \frac{f(c+h)-f(c)}{h}\\
+    &= \lim_{h \to 0^{+}} \frac{e^{-\brak{c+h}} \sin \brak{c+h} - e^{-c} \sin c}{h}\\
+    \label{eq-2}
+    &= e^{-c} \lim_{h \to 0^{+}} \brak {\frac{e^{-h} \sin \brak{c+h} - \sin c}{h}}
 \end{align}
 We know that,
 \begin{align}
-    \label{eq-2}
-    \sin \brak{x+h} &= \sin x \cos h + \cos x \sin h\\
     \label{eq-3}
-    \text{Also, } \lim_{h \to 0} \frac{\sin h}{h} &= 1,\\
+    \sin \brak{x+h} &= \sin x \cos h + \cos x \sin h\\
     \label{eq-4}
-    \lim_{h \to 0} \cos h = \lim_{h \to 0} e^{-h} &= 1
+    \text{Also, } \lim_{h \to 0^{-}} \frac{\sin h}{h} &= \lim_{h \to 0^{+}} \frac{\sin h}{h} = 1,\\
+    \label{eq-5}
+    \lim_{h \to 0^{-}} \cos h &= \lim_{h \to 0^{+}} \cos h = 1,\\
+    \label{eq-6}
+    \lim_{h \to 0^{-}} e^{-h} &= \lim_{h \to 0^{+}} e^{-h} = 1
 \end{align}
-From equations \eqref{eq-2} \eqref{eq-3} \eqref{eq-4}, equation \eqref{eq-1} becomes
+From equations \eqref{eq-3} \eqref{eq-4} \eqref{eq-5} \eqref{eq-6}, equation \eqref{eq-1} becomes
 \begin{align}
-    L &= e^{-x} \lim_{h \to 0} \brak{e^{-h} \cos x +\frac{e^{-h}sinx - sinx}{h}}\\
-    &= e^{-x} \brak{\cos x + \sin x \lim_{h \to 0} \frac{e^{-h}-1}{h}}
+    \text{LHD} &= e^{-c} \lim_{h \to 0^{-}} \brak{e^{-h} \cos c +\frac{e^{-h}sinc - sinc}{h}}\\
+    &= e^{-c} \brak{\cos c + \sin c \lim_{h \to 0^{-}} \frac{e^{-h}-1}{h}}
 \end{align}
-We know that
+Similarly, from equations \eqref{eq-3} \eqref{eq-4} \eqref{eq-5} \eqref{eq-6}, equation \eqref{eq-2} becomes
 \begin{align}
-    \lim_{h \to 0} \frac{1-e^{-h}}{h} &= 1,\\
-    \implies L &= e^{-x} \brak{\cos x - \sin x}
+    \text{RHD} &= e^{-c} \lim_{h \to 0^{+}} \brak{e^{-h} \cos c +\frac{e^{-h}sinc - sinc}{h}}\\
+    &= e^{-c} \brak{\cos c + \sin c \lim_{h \to 0^{+}} \frac{e^{-h}-1}{h}}
 \end{align}
-
-$e^{-x} \brak{\cos x - \sin x}$ exists $\forall x \in \brak{0,\pi}$.\\
+We know that, $\lim_{h \to 0^{-}} \frac{1-e^{-h}}{h}$ and $\lim_{h \to 0^{+}} \frac{1-e^{-h}}{h}$ exist.\\
+$\implies$ both LHD and RHD exists.
+\begin{align}
+    \lim_{h \to 0^{-}} \frac{1-e^{-h}}{h} &= \lim_{h \to 0^{+}} \frac{1-e^{-h}}{h} = 1,\\
+    \implies \text{LHD} &= \text{RHD} = e^{-x} \brak{\cos x - \sin x}
+\end{align}
+$\because$ LHD and RHD exists and equal, we can say that $f(x)$ is differentiable.\\
 $\implies f(x)$ is differentiable in $\brak{0,\pi}$.\\
 Thus, all the conditions of the Rolle's theorem are satisfied.\\
 $\therefore \exists c \in \brak{0, \pi}$ such that $f^\prime(c) = 0$.\\
@@ -231,7 +245,7 @@ Hence, Rolle's theorem is verified.\\
 Also, we can see from the graph clearly that all the necessary conditions for Rolle's theorem are satisfied and $f^\prime(\frac{\pi}{4}) = 0$
 \begin{figure}[ht!]
 	  \centering 
-	  \includegraphics[width=\columnwidth]{Figs/Figure_1.png}
+	  \includegraphics[width=\columnwidth]{Figure_1.png}
 	  \caption{Graph of $f(x)$ and $f^\prime(x)$ in $\sbrak{0,\pi}$}
 	  \label{fig-1}
 \end{figure}
