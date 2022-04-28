@@ -1,1 +1,1 @@
-# Assignment-1
+# AI1110 Assignments
