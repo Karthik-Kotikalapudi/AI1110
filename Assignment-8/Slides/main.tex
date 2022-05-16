@@ -1,0 +1,95 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp, gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}                                     
+                               
+\title{Assignment 10}
+\author{Kotikalapudi Karthik (CS21BTECH11030)}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+%Question
+\section{Question}
+\begin{frame}{Question}
+    \begin{block}{Chapter 13 Example 6 [NCERT 12]} 
+        Bag I contains $3$ red and $4$ black balls while another Bag II contains $5$ red and $6$ black balls. One ball is drawn at random from one of the bags and it is found to be red. Find the probability that it was drawn from Bag II.
+    \end{block}
+\end{frame}
+
+%Solution
+\section{Solution}
+\begin{frame}{Solution}
+Let random variables $X_1, X_2 \in \cbrak{0,1}$ denote the following events in Table \eqref{table:table1}
+\begin{table}[ht!]
+	\centering
+	\input{Table1}
+	\caption{}
+	\label{table:table1}	
+\end{table}
+\end{frame}
+
+\begin{frame}{Various Probability values}
+    Various probability values are are given in the Table \eqref{table:table2}.
+	\begin{table}[ht!]
+		\input{Table2}
+		\caption{}
+		\label{table:table2}	
+	\end{table}
+\end{frame}
+
+\begin{frame}{Required Probability}
+   \begin{block}{By Bayes' theorem,}
+   \begin{align}
+    \pr{X_1=1|X_2=0}&= \frac{\pr{X_1=1}\pr{X_2=0|X_1=1}}{\Sigma^{1}_{i=0}\pr{X_1=i}\pr{X_2=0|X_1=i}}
+    \end{align}
+    \end{block}
+    \begin{align}
+        \implies \pr{X_1=1|X_2=0}&= \frac{\frac{1}{2} \times \frac{5}{11}}{\frac{1}{2} \times \frac{3}{7} + \frac{1}{2} \times \frac{5}{11}}
+        \\
+        &= \frac{35}{68}
+    \end{align}
+\end{frame}
+
+\end{document}
