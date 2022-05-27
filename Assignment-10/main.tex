@@ -81,7 +81,8 @@
 \end{block}
 \end{frame}
 
-\begin{frame}{Graph description}
+\section{Method-I}
+\begin{frame}{Method-I}
     Given, train stops for 10 mins and bus stops for $x$ minutes.\\
     Let's draw a graph with Arrival time of bus in mins on X-axis and Arrival time of train in mins on Y-axis.\\
     For the region in which bus and train meet(in blue color),\\
@@ -89,7 +90,6 @@
     $X<Y+10$(bus should arrive within 10 minutes after the train)
 \end{frame}
 
-\section{Graph}
 \begin{frame}{Graph}
     \begin{figure}[!ht]
 		\centering
@@ -99,11 +99,10 @@
 	\end{figure}
 \end{frame}
 
-\section{Finding the value of x}
 \begin{frame}{Finding the Value of x}
     \begin{align}
-        \text{Given, }\frac{\pr{X_1=1}}{\Sigma^{1}_{i=0}\pr{X_1=i}} &= 0.5\\
-        \implies \frac{\pr{X_1=0}}{\Sigma^{1}_{i=0}\pr{X_1=i}} &= 0.5
+        \text{Given, }\pr{X_1=1} &= 0.5\\
+        \implies \pr{X_1=0} &= 0.5
         \label{eq:eq-1}
     \end{align}
     Substituting the values from the Figure \eqref{fig:fig1} in equation \eqref{eq:eq-1},
@@ -116,6 +115,64 @@
         \\
         \implies x &= 60 - 10\sqrt{11} \approx 26.83 \text{ mins}
     \end{align}
+\end{frame}
+
+\section{Method-2}
+\begin{frame}{Method - II}
+    Let the bus arrive at time $t_B$ and train at $t_T$.\\
+    Let's take the area $1 min^2$ as $1$ unit
+    \begin{align}
+        \implies n\brak{\Sigma^{1}_{i=0}X_1=i} &= \int_{0}^{60} \brak{\int_{0}^{60} \,dt_T}\,dt_B
+        \\
+        &= 3600
+    \end{align}
+    If train arrives first, it can arrive in first $50$ mins or last $10$ mins.\\
+    If train arrives in first $50$ mins, for each value of $t_T$, bus should arrive within $t_T+10$ mins.\\
+    It train arrives in $50$ to $60$ mins, for each value of $t_T$, bus should arrive within $60$ mins.\\
+    \begin{align}
+        \implies n\brak{X_1=1,X_2=1} &= \int_{0}^{50} \brak{\int_{t_T}^{t_T+10} \,dt_B} \,dt_T + \int_{50}^{60} \brak{\int_{t_T}^{60} \,dt_B} \,dt_T
+    \end{align}
+\end{frame}
+
+\begin{frame}{If Bus arrives first}  
+    If bus arrives first, it can arrive in $60-x$ mins or last $x$ mins.\\
+    If bus arrives in first $60-x$ mins, for each value of $t_B$, train should arrive within $t_B+10$ mins.\\
+    It bus arrives in $60-x$ to $60$ mins, for each value of $t_T$, train should arrive within $60$ mins.\\
+    \begin{align}
+        \implies n\brak{X_1=1,X_2=0} &= \int_{0}^{60-x} \brak{\int_{t_B}^{t_B+x} \,dt_T} \,dt_B + \int_{60-x}^{60}\brak{\int_{t_B}^{60} \,dt_T} \,dt_B
+        \\
+        \text{Also, }n(X_1=1) &= n\brak{X_1=1,X_2=0}+n\brak{X_1=1,X_2=1}
+    \end{align}
+    
+\end{frame}
+
+\begin{frame}{If Bus and train meet}
+   \begin{align}
+       n(X_1=1) &= 500+x\brak{60-x}+\int_{50}^{60}(60-t_T) \,dt_T + \int_{60-x}^{60}(60-t_B)\,dt_B
+       \\
+       &= 1100 + 120x -x^2-\int_{50}^{60}t_T \,dt_T - \int_{60-x}^{60}t_B\,dt_B
+       \\
+       &= 1100 + 120x -x^2-\brak{\frac{60^2-50^2}{2}}-\brak{\frac{60^2-\brak{60-x}^2}{2}}\\
+       &= \frac{1100+120x-x^2}{2}
+    \end{align}
+    \begin{align}
+       \implies |n\brak{X_1=1}| &= \frac{\brak{60-x}^2+2500}{2}
+    \end{align} 
+\end{frame}
+
+\begin{frame}{Finding the Value of x}
+We know that,
+   \begin{align}
+       \pr{X_1=1} &= \frac{n\brak{X_1=1}}{n\brak{\Sigma^{1}_{i=0}X_1=i}} = 0.5
+       \\
+        \frac{\frac{1}{2}\sbrak{\brak{60-x}^2+50\times50}}{60\times60} &= 0.5
+        \\
+        \implies \brak{60-x}^2+50\times50 &= 60\times60
+        \\
+        \implies \brak{60-x}^2 &= 1100
+        \\
+        \implies x &= 60 - 10\sqrt{11} \approx 26.83 \text{ mins}
+    \end{align} 
 \end{frame}
 
 \end{document}
