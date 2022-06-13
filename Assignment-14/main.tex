@@ -66,11 +66,41 @@
 \section{Question}
 \begin{frame}{Question}
     \begin{block}{Probability, Random Variables and Stochastic Processes Chapter 8, Problem 8-31} 
-         A die is tossed $102$ times, and the $i^{th}$ face shows $k_i$ = $18, 15, 19, 17, 13, \text{and } 20$ times. Test the hypothesis that the die is fair with $\alpha$ = 0.05 using the chi-square test
+         A die is tossed $102$ times, and the $i^{th}$ face shows \textbf{$k_i$} = $18, 15, 19, 17, 13, \text{and } 20$ times. Test the hypothesis that the die is fair with $\alpha$ = 0.05 using the chi-square test
     \end{block}
 \end{frame}
 
 %Solution
+\section{Chi Square Test}
+\begin{frame}{Chi Square Test}
+    Let the total number of trails be $n$.
+    In this test we a introduce a sum $\textbf{q}$ known as \emph{Pearson's test static}.
+    \begin{align}
+        \textbf{q} &= \sum^{m}_{i=1}\frac{\brak{k_i-np_{0i}}^2}{np_{0i}}
+    \end{align}
+    where,
+    \begin{align}
+        k_i &= \text{Observed value for the event $i$}
+        \\
+        p_{0i} &= \text{Expected probability of the event $i$}
+    \end{align}
+    If this sum $\textbf{q}$ is less than ${\chi^2}_{1-\alpha}\brak{m-1}$, where $\alpha$ is significance level, we can accept the hypothesis.\\
+\end{frame}
+
+\section{Chi Square Test Proof}
+\begin{frame}{Chi Square Test}
+    let $p_i$ denote observed probability of the event $i$.\\
+    We know that,\\
+    The ratio, $\frac{k_i}{n} \to p_{0i}$ as $n \to \infty$\\
+    From this, $|k_i-np_{0i}|$ is small if $p_i=p_{0i}$ and increases as $|p_i-p_{0i}|$ increases.\\
+    This justifies the use of random variable $\textbf{q}$ and the set $q>c$ as critical region of the test.\\
+    For large value of n, $\textbf{q}$ has $\chi^2$ distribution.\\
+    Because of the constraint $\sum p_{0i}=1$, the distribution of $\textbf{q}$ has only $m-1$ degrees of freedom.\\
+    $\implies \textbf{q}$ has $\chi^2\brak{m-1}$ distribution.\\
+    If $X$ is a random variable having $\chi^2$ distribution with $n$ degrees of freedom, then ${\chi^2}_{1-\alpha}\brak{n}$ can be calculated by $\pr{X \geq {\chi^2}_{1-\alpha}\brak{n}}=\alpha$\\
+    Therefore, if this sum $\textbf{q}$ is less than ${\chi^2}_{1-\alpha}\brak{m-1}$, we can accept the hypothesis.
+\end{frame}
+
 \section{Solution}
 \begin{frame}{Solution}
     Let's denote the random variable $X_1=\cbrak{1,2,3,4,5,6}$ where each $X_1=i$ denote that $i$ appeared on top of the die theoretically.\\
@@ -83,7 +113,7 @@
         \\
         \text{Here, }\pr{X_1=i} &= \frac{1}{6}, \forall i \in \cbrak{1,2,3,4,5,6}
         \\
-        \implies \textbf{q} &= \sum^{6}_{i=1}\frac{\brak{\pr{X_2=i}-17}^2}{17}
+        \implies \textbf{q} &= \sum^{6}_{i=1}\frac{\brak{6\times\pr{X_2=i}-17}^2}{17}
         \\
         &= \frac{1+4+4+0+16+9}{17} = 2
     \end{align}
