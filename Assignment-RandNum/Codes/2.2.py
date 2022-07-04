@@ -1,4 +1,5 @@
 import numpy as np
+import scipy
 import matplotlib.pyplot as plt
 import mpmath as mp
 
@@ -13,8 +14,10 @@ for i in range(0,30):
 	err_n = np.size(err_ind) 
 	err.append(err_n/simlen) 
 
+def Q(x):
+    return mp.erfc(x/mp.sqrt(2))/2
 def gau_cdf(x):
-	return 1-mp.erfc(x/mp.sqrt(2))/2
+	return 1-Q(x)
 		
 vec_gau_cdf = scipy.vectorize(gau_cdf, otypes=[float])	
 plt.plot(x.T,err,'o')
@@ -24,6 +27,6 @@ plt.xlabel('$x$')
 plt.ylabel('$F_X(x)$')
 plt.legend(["Numerical","Theory"])
 
-plt.show
+plt.show()
 plt.savefig('gau_cdf.pdf')
 plt.savefig('gau_cdf.eps')
